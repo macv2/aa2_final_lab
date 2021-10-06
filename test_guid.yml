@@ -11,5 +11,5 @@
   tasks:
     - name: get guid
       debug:
-        var: guid
+        var: home
       
