@@ -1,6 +1,6 @@
 ---
 instances:
-  - name: frontend1
+  - name: frontend1                #for haproxy
     keypair: "{{ guid }}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
@@ -10,7 +10,7 @@ instances:
       AnsibleGroup: osp_instances
       deployment_name: dev
 
-  - name: app1
+  - name: app1                        #for flask1
     keypair: ${GUID}-keypair
     keypair: "{{ guid }}-keypair"
     image: rhel-8.3
@@ -21,7 +21,7 @@ instances:
       AnsibleGroup: osp_instances
       deployment_name: dev
 
-  - name: app2
+  - name: app2                        #for flask2      
     keypair: "{{ guid }}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
@@ -31,7 +31,7 @@ instances:
       AnsibleGroup: osp_instances
       deployment_name: dev
 
-  - name: appdb1
+  - name: appdb1                        #for postgres
     keypair: "{{ guid }}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
