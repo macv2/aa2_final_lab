@@ -1,7 +1,4 @@
 ---
-vars:
-  guid: "{{ lookup('ENV','GUID') }}"
-
 instances:
   - name: frontend1
     keypair: "{{ guid }}-keypair"
