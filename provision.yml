@@ -2,13 +2,13 @@
 - name: Create OpenStack Instances
   hosts: all
   #connection: local
-  gather_facts: false
+  gather_facts: true
   vars:
-    #guid: "{{ lookup('env','GUID') }}"
-    guid: 30cd
+    guid: "{{ lookup('env','GUID') }}"
+    #guid: 30cd
   tasks:
-    - name: Include Instance variables
-      include_vars: instances_vars.yml
+    #- name: Include Instance variables
+     # include_vars: instances_vars.yml
 
     - name: Show my guid 
       debug: 
