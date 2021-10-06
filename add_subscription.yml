@@ -20,7 +20,7 @@
     - name: Build In-Memory inventory
       add_host:
         host: "{{ instance.name }}.{{ internal_domain }}"
-        group: "{{ instance.metadata.AnsibleGroup }}"
+        group: my_osp_instances
         ansible_host: "{{ instance.private_v4 }}"
         ssh_private_key_file: "{{ home }}/.ssh/{{ guid }}key.pem"
       when: instance.metadata.AnsibleGroup == "osp_instances"
@@ -29,11 +29,12 @@
         loop_var: instance
 
 - name: Add subscription
-  hosts: groups.osp_instances
+  hosts: my_osp_instances
   gather_facts: true
   tasks:
     - debug:
         msg: "{{ hostvars['control'].ansible_default_ipv4.address }}, {{ hostvars['control'].ansible_dns.nameservers.0 }} "
+    
     - name: Insert DNS IP
       command: >-
         nmcli connection modify "System eth0"
