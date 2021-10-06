@@ -29,4 +29,4 @@
   connection: local
   gather_facts: false
   tasks:
-    - debug: var=groups
+    - debug: var=groups.osp_instances
