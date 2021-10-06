@@ -10,8 +10,7 @@
     
   tasks:
     - name: show guid
-      debug:
-        var: guid
+      debug: "este es el ID  {{ lookup('ENV','GUID') }}"" 
 
     - name: show home
       debug:
