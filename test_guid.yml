@@ -13,9 +13,9 @@
       command: echo ${GUID}
          
   
-    - name: show guid
-      debug: 
-        msg: "este es el ID  {{ lookup('ENV','GUID') }}"
+    - name: show home
+      debug:
+        var: guid
 
     - name: show home
       debug:
