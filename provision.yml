@@ -10,7 +10,7 @@
   tasks:
     - name: get GUID
       command: echo ${GUID}
-      register: guid
+      register: guid2
 
     - name: Show my guid 
       debug: 
