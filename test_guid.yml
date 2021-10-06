@@ -1,7 +1,7 @@
 ---
 - name: In-Memory Inventory
   hosts: localhost
-  connection: local
+  #connection: local
   gather_facts: false
   vars:
     guid: "{{ lookup('ENV','GUID') }}"
@@ -9,7 +9,11 @@
     internal_domain: "example.com"
     
   tasks:
-    - name: get guid
+    - name: show guid
+      debug:
+        var: guid
+
+    - name: show home
       debug:
         var: home
       
