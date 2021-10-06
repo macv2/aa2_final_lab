@@ -3,7 +3,7 @@
   tasks:
     - name: os_server_info
       os_server_info:
-        server: lb 
+        server: frontend1 
       register: lb_instance
       
     - name: Smoke test for muti-tier app
