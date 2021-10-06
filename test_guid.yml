@@ -10,6 +10,10 @@
     
   tasks:
     - name: show guid
+      command:  "echo ${GUID}"
+         
+  
+    - name: show guid
       debug: 
         msg: "este es el ID  {{ lookup('ENV','GUID') }}"
 
