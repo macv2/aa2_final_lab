@@ -10,7 +10,7 @@
     
   tasks:
     - name: show guid
-      command:  "echo ${GUID}"
+      command: echo ${GUID}
          
   
     - name: show guid
