@@ -7,8 +7,9 @@
     guid: "{{ lookup('ENV','GUID') }}"
     home: "{{ lookup('ENV','HOME') }}"
     internal_domain: "example.com"
+    
   tasks:
     - name: get guid
-      degug: 
+      debug:
         var: guid
       
