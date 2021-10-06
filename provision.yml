@@ -4,7 +4,8 @@
   #connection: local
   gather_facts: false
   vars:
-    guid: "{{ lookup('env','GUID') }}"
+    #guid: "{{ lookup('env','GUID') }}"
+    guid: 30cd
   tasks:
     - name: Include Instance variables
       include_vars: instances_vars.yml
