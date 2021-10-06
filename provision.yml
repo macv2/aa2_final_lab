@@ -4,11 +4,13 @@
   #connection: local
   gather_facts: true
   vars:
-    guid: "{{ lookup('env','GUID') }}"
+    #guid: "{{ lookup('env','GUID') }}"
     #guid: 30cd
+    
   tasks:
-    #- name: Include Instance variables
-     # include_vars: instances_vars.yml
+    - name: get GUID
+      command: echo ${GUID}
+      register: guid
 
     - name: Show my guid 
       debug: 
