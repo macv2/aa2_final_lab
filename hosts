@@ -6,8 +6,7 @@ app1  ansible_ssh_host=app1."{{ GUID }}".internal
 app2  ansible_ssh_host=app2."{{ GUID }}".internal
 
 [database_servers]
-appdb1
-appdb1.example.com
+appdb1.example.com    ansible_host: 192.168.51.11  ssh_private_key_file: "{{ home }}/.ssh/{{ guid }}key.pem"
 
 
 [internal:children]
