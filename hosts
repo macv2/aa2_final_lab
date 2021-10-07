@@ -1,5 +1,5 @@
 [load_balancers]
-frontend1.example.com
+frontend1  ansible_ssh_host=frontend1."{{ GUID }}".internal
 
 [app_servers]
 192.168.51.14 
