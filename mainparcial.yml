@@ -9,8 +9,8 @@
     
     postgres_rhel8_repo: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
     postgres_packages:
-      - postgresql-12 
-      - postgresql-server-12 
+      #- postgresql-12 
+      - postgresql12-server 
       #- postgresql12-contrib 
       #- postgresql12-libs- postgresql
     postgres_library: python-psycopg2
