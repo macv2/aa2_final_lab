@@ -1,0 +1,74 @@
+---
+- name: prueba database
+  hosts: database_servers
+  become: true
+  gather_facts: false
+  tags:
+    - database_servers
+  
+  tasks:
+    - name: optener nombre
+      commmand: hostname
+      register: nombrehost
+      
+    - name: presentar nombres
+      debug:
+        var: nombrehost
+    
+
+- name: prueba app servers
+  hosts: app_servers
+  become: true
+  gather_facts: false
+  tags:
+    - application_servers
+    - flask
+
+  tasks:
+    - name: optener nombre
+      commmand: hostname
+      register: nombrehost
+      
+    - name: presentar nombres
+      debug:
+        var: nombrehost
+        
+- name: load balancers
+  hosts: load_balancers
+  gather_facts: false 
+  become: true
+
+  vars:
+    load_balancer_packages:
+      - haproxy
+
+  tags:
+    - load_balancers
+
+  tasks:
+    - name: optener nombre
+      commmand: hostname
+      register: nombrehost
+      
+    - name: presentar nombres
+      debug:
+        var: nombrehost
+
+- name: End to end smoke tests
+  hosts: app_servers:database_servers
+  gather_facts: true
+  become: true
+  tags:
+    - smoketest  
+
+  tasks:
+    - name: optener nombre
+      commmand: hostname
+      register: nombrehost
+      
+    - name: presentar nombres
+      debug:
+        var: nombrehost
+
+
+
