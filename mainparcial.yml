@@ -34,7 +34,7 @@
   tasks:
     - name: install the postgres rpm from a remote repo
       yum:
-        name: {{ postgres_rhel8_repo }}
+        name: "{{ postgres_rhel8_repo }}"
         state: present
    
 
