@@ -6,12 +6,13 @@
   tags:
     - database_servers
   vars:
+    
     postgres_rhel8_repo: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
     postgres_packages:
-      - postgresql10 
-      - postgresql10-server 
-      - postgresql10-contrib 
-      - postgresql10-libs
+      - postgresql12 
+      - postgresql12-server 
+      - postgresql12-contrib 
+      - postgresql12-libs
     postgres_library: python-psycopg2
     postgres_10_data_dir: /var/lib/pgsql/10/data
     postgres_10_bin_path: /usr/pgsql-10/bin
@@ -31,12 +32,18 @@
         owner: flask
 
   tasks:
+    - name: install the postgres rpm from a remote repo
+      yum:
+      name: {{ postgres_rhel8_repo }}
+      state: present
+   
 
     - name: Install Postgres packages
       package:
         name: "{{ __package }}"
         state: present
       loop: 
-        - "{{ postgres_rhel8_repo }}"        
+        - postgres_packages
+        - postgres_library
       loop_control:
         loop_var: __package
