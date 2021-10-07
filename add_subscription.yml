@@ -36,3 +36,28 @@
     - debug:
         msg: "{{ hostvars['control.example.com'].ansible_host }} , {{ hostvars['control.example.com'].groups.controls[0] }}   "
 
+    - name: Insert DNS IP
+      command: >-
+        nmcli connection modify "System eth0"
+        ipv4.ignore-auto-dns yes
+        ipv4.dns {{ hostvars['control.example.com'].ansible_host }}
+        +ipv4.dns {{ hostvars['control.example.com'].groups.controls[0] }}
+        +ipv4.dns 8.8.8.8
+    
+    - name: Restart NetworkManager
+      service:
+        name: NetworkManager
+        state: restarted
+
+    - name: install katello-ca-consumer package
+      yum:
+        name: http://satellite.example.com/pub/katello-ca-consumer-latest.noarch.rpm
+        disable_gpg_check: true
+        state: present
+
+    - name: register system and attach subs
+      redhat_subscription:
+        state:   present
+        username: "admin"
+        password: "r3dh4t1!"
+        auto_attach: true
