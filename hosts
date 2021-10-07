@@ -1,12 +1,12 @@
 [load_balancers]
-frontend1  ansible_ssh_host=frontend1."{{ GUID }}".internal
+frontend1.example.com    ansible_host: 192.168.51.15
 
 [app_servers]
-app1  ansible_ssh_host=app1."{{ GUID }}".internal
-app2  ansible_ssh_host=app2."{{ GUID }}".internal
+app1.example.com    ansible_host: 192.168.51.14
+app2.example.com    ansible_host: 192.168.51.13
 
 [database_servers]
-appdb1.example.com    ansible_host: 192.168.51.11  ssh_private_key_file: "{{ home }}/.ssh/{{ guid }}key.pem"
+appdb1.example.com    ansible_host: 192.168.51.11
 
 
 [internal:children]
