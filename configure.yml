@@ -12,3 +12,8 @@
       delegate_facts: true
       delegate_to: localhost
       connection: local
+      register: netfacts
+      
+    - name: presentar datos
+      debug:
+        var: netfacts 
