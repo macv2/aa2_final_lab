@@ -6,4 +6,4 @@ app1.example.com
 app2.example.com
 
 [database_servers]
-appdb1.example.com
+192.168.51.11
