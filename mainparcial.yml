@@ -32,10 +32,10 @@
         owner: flask
 
   tasks:
-    #- name: install the postgres rpm from a remote repo
-     # yum:
-       # name: "{{ postgres_rhel8_repo }}"
-       # state: present
+    - name: install the postgres rpm from a remote repo
+      yum:
+        name: "{{ postgres_rhel8_repo }}"
+        state: present
         #disable_gpg_check: yes
 
 
@@ -49,7 +49,7 @@
         name: "{{ __package }}"
         state: present
       loop:
-        - "{{ postgres_rhel8_repo }}"
+        #- "{{ postgres_rhel8_repo }}"
         - "{{ postgres_packages }}"
         #- "{{ postgres_library }}"
       loop_control:
