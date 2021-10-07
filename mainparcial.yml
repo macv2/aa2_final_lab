@@ -9,8 +9,8 @@
     
     postgres_rhel8_repo: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
     postgres_packages:
-      - postgresql 
-      - postgresql-server 
+      - postgresql12 
+      - postgresql12-server 
       #- postgresql12-contrib 
       #- postgresql12-libs- postgresql
     postgres_library: python-psycopg2
@@ -38,10 +38,12 @@
         state: present
         disable_gpg_check: yes
         validate_certs: no
-   
 
+    - name:  disable module for postgresql
+      command: dnf -yq module disable postgresql
+        
     - name: Install Postgres packages
-      package:
+      dnf:
         name: "{{ __package }}"
         state: present
       loop: 
