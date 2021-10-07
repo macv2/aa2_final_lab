@@ -35,7 +35,12 @@
 - name: Add subscription
   hosts: my_osp_instances
   gather_facts: true
-  become: yes 
+  become: yes
+  vars:
+    satellite_activationkey: gpte-labs-rhel8
+    satellite_org: prod  
+  
+  
   tasks:
     - name: Gather network facts
       setup:
@@ -44,7 +49,18 @@
       delegate_facts: true
       delegate_to: localhost
       connection: local
-      register: netfacts      
+      register: netfacts
+      
+    - name: DNS IP updated
+      lineinfile:
+        state: present
+        path: /etc/sysconfig/network-scripts/ifcfg-eth0
+        line: "{{ item }}"
+      loop:
+        - PEERDNS=no
+        - DNS1={{ hostvars.localhost.ansible_default_ipv4.address }}
+      register: network_update
+      
      
     - debug:
         msg: "{{ netfacts.ansible_facts.ansible_default_ipv4.address }} "
@@ -52,18 +68,19 @@
     - debug:
         msg: "{{ hostvars['control.example.com'].ansible_host }} "
 
-    - name: Insert DNS IP
-      command: >-
-        nmcli connection modify "System eth0"
-        ipv4.ignore-auto-dns yes
-        ipv4.dns {{ hostvars['control.example.com'].ansible_host }}
-        +ipv4.dns 8.8.8.8
+ #   - name: Insert DNS IP
+ #     command: >-
+ #       nmcli connection modify "System eth0"
+ #       ipv4.ignore-auto-dns yes
+ #       ipv4.dns {{ hostvars['control.example.com'].ansible_host }}
+ #      +ipv4.dns 8.8.8.8
  
     
     - name: Restart NetworkManager
       service:
         name: NetworkManager
         state: restarted
+      when: network_update.changed | bool  
 
     - name: install katello-ca-consumer package
       yum:
