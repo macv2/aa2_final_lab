@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/load-balancer
+    load_balancer_packages:
+      - haproxy
