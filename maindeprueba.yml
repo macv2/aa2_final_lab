@@ -8,7 +8,7 @@
   
   tasks:
     - name: optener nombre
-      commmand: hostname
+      command: hostname
       register: nombrehost
       
     - name: presentar nombres
@@ -26,7 +26,7 @@
 
   tasks:
     - name: optener nombre
-      commmand: hostname
+      command: hostname
       register: nombrehost
       
     - name: presentar nombres
@@ -47,7 +47,7 @@
 
   tasks:
     - name: optener nombre
-      commmand: hostname
+      command: hostname
       register: nombrehost
       
     - name: presentar nombres
@@ -63,7 +63,7 @@
 
   tasks:
     - name: optener nombre
-      commmand: hostname
+      command: hostname
       register: nombrehost
       
     - name: presentar nombres
