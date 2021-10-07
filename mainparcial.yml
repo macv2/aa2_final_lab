@@ -9,8 +9,8 @@
     
     postgres_rhel8_repo: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
     postgres_packages:
-      - postgresql12 
-      - postgresql12-server 
+      - postgresql-12 
+      - postgresql-server-12 
       #- postgresql12-contrib 
       #- postgresql12-libs- postgresql
     postgres_library: python-psycopg2
@@ -39,8 +39,8 @@
         #disable_gpg_check: yes
 
 
-    - name:  disable module for postgresql
-      command: dnf config-manager --set-enabled postgresql
+    #- name:  disable module for postgresql
+    #  command: dnf config-manager --set-enabled postgresql
       
      
         
