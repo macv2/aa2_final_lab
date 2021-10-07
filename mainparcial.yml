@@ -13,9 +13,6 @@
       - postgresql-server-12 
       #- postgresql12-contrib 
       #- postgresql12-libs- postgresql
-  - postgresql-server
-  - postgresql-contrib
-      
     postgres_library: python-psycopg2
     postgres_10_data_dir: /var/lib/pgsql/10/data
     postgres_10_bin_path: /usr/pgsql-10/bin
