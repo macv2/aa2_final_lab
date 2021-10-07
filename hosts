@@ -1,5 +1,5 @@
 [load_balancers]
-192.168.51.15 
+frontend1
 
 [app_servers]
 192.168.51.14 
