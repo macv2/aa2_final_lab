@@ -46,6 +46,6 @@
         state: present
       loop: 
         - "{{ postgres_packages }}"
-        - "{{ postgres_library }}"
+        #- "{{ postgres_library }}"
       loop_control:
         loop_var: __package
