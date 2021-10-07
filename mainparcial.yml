@@ -43,7 +43,7 @@
       command: dnf -yq module disable postgresql
         
     - name: Install Postgres packages
-      packages:
+      package:
         name: "{{ __package }}"
         state: present
       loop: 
