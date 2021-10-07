@@ -34,5 +34,5 @@
   gather_facts: true
   tasks:
     - debug:
-        msg: "{{ hostvars['control.example.com'].ansible_host }} "
+        msg: "{{ hostvars['control'].ansible_host }} "
 
