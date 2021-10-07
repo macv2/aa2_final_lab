@@ -38,7 +38,5 @@
         state: present
       loop: 
         - "{{ postgres_rhel8_repo }}"        
-        - "{{ postgres_packages }}"
-        - "{{ postgres_library }}"
       loop_control:
         loop_var: __package
