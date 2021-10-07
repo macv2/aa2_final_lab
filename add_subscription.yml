@@ -32,6 +32,7 @@
 - name: Add subscription
   hosts: my_osp_instances
   gather_facts: true
+  become: yes 
   tasks:
     - debug:
         msg: "{{ hostvars['control.example.com'].ansible_host }} , {{ hostvars['control.example.com'].groups.controls[0] }}   "
@@ -42,7 +43,7 @@
         ipv4.ignore-auto-dns yes
         ipv4.dns {{ hostvars['control.example.com'].ansible_host }}
         +ipv4.dns 8.8.8.8
-      become: yes  
+ 
     
     - name: Restart NetworkManager
       service:
