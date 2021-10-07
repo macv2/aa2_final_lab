@@ -37,17 +37,21 @@
         name: "{{ postgres_rhel8_repo }}"
         state: present
         disable_gpg_check: yes
-        validate_certs: no
+
 
     - name:  disable module for postgresql
       command: dnf -yq module disable postgresql
+      
+    - name:  disable module for postgresql
+      command: dnf install postgresql12 postgresql12-server
+      
         
-    - name: Install Postgres packages
-      package:
-        name: "{{ __package }}"
-        state: present
-      loop: 
-        - "{{ postgres_packages }}"
+    #- name: Install Postgres packages
+     # package:
+    #    name: "{{ __package }}"
+     #   state: present
+     # loop: 
+    #    - "{{ postgres_packages }}"
         #- "{{ postgres_library }}"
-      loop_control:
-        loop_var: __package
+     # loop_control:
+    #    loop_var: __package
