@@ -62,11 +62,11 @@
       register: network_update
       
      
-    - debug:
-        msg: "{{ netfacts.ansible_facts.ansible_default_ipv4.address }} "
+    #- debug:
+    #    msg: "{{ netfacts.ansible_facts.ansible_default_ipv4.address }} "
   
-    - debug:
-        msg: "{{ hostvars['control.example.com'].ansible_host }} "
+    #- debug:
+    #    msg: "{{ hostvars['control.example.com'].ansible_host }} "
 
  #   - name: Insert DNS IP
  #     command: >-
