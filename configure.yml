@@ -16,4 +16,4 @@
       
     - name: presentar datos
       debug:
-        var: netfacts 
+        var: netfacts.ansible_facts.ansible_default_ipv4.address 
