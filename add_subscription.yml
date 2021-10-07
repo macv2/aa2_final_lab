@@ -35,7 +35,10 @@
   become: yes 
   tasks:
     - debug:
-        msg: "{{ hostvars['control.example.com'].ansible_host }} , {{ hostvars['control.example.com'].groups.controls[0] }}   "
+        msg: "{{ hostvars['control.example.com']}} "  
+  
+    - debug:
+        msg: "{{ hostvars['control.example.com'].ansible_host }} "
 
     - name: Insert DNS IP
       command: >-
