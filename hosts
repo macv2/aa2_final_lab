@@ -7,6 +7,7 @@ app2  ansible_ssh_host=app2."{{ GUID }}".internal
 
 [database_servers]
 appdb1 ansible_ssh_host=appdb1."{{ GUID }}".internal
+appdb1.example.com
 
 [internal:children]
 load_balancers
