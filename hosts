@@ -1,9 +1,9 @@
 [load_balancers]
-frontend1.example.com
+192.168.51.15 
 
 [app_servers]
-app1.example.com
-app2.example.com
+192.168.51.14 
+192.168.51.13 
 
 [database_servers]
 192.168.51.11
