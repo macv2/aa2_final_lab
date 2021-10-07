@@ -53,4 +53,4 @@
         - "{{ postgres_packages }}"
         #- "{{ postgres_library }}"
       loop_control:
-        loop_var: __package
+        loop_var: __package 
