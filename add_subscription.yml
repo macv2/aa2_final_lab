@@ -47,7 +47,7 @@
       register: netfacts      
      
     - debug:
-        msg: "{{ netfacts.ansible_facts.ansible_default_ipv4.address }} "  
+        msg: "{{ netfacts.ansible_facts.ansible_default_ipv4.address }} "
   
     - debug:
         msg: "{{ hostvars['control.example.com'].ansible_host }} "
