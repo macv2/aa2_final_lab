@@ -32,15 +32,21 @@
         owner: flask
 
   tasks:
-    - name:
+    - name: deabilitar modulo postgre 
       commmand: dnf -qy module disable postgresql
+ 
+     - name: installar
+       yum:
+         name: {{ postgres_rhel8_repo }}
+         state: present
+      
   
     - name: Install Postgres packages
       package:
         name: "{{ __package }}"
         state: present
       loop:
-        - "{{ postgres_rhel8_repo }}"
+        #- "{{ postgres_rhel8_repo }}"
         - "{{ postgres_packages }}"
         - "{{ postgres_library }}"
       loop_control:
