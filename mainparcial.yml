@@ -37,7 +37,7 @@
  
     - name: installar
       yum:
-        name: {{ postgres_rhel8_repo }}
+        name: "{{ postgres_rhel8_repo }}"
         state: present
       
   
