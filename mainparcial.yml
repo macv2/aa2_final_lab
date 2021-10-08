@@ -35,10 +35,10 @@
     - name: deabilitar modulo postgre 
       commmand: dnf -qy module disable postgresql
  
-     - name: installar
-       yum:
-         name: {{ postgres_rhel8_repo }}
-         state: present
+    - name: installar
+      yum:
+        name: {{ postgres_rhel8_repo }}
+        state: present
       
   
     - name: Install Postgres packages
