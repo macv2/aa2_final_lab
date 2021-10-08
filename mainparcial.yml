@@ -39,6 +39,7 @@
       yum:
         name: "{{ postgres_rhel8_repo }}"
         state: present
+        gpgcheck: no
       
   
     - name: Install Postgres packages
