@@ -32,8 +32,8 @@
         owner: flask
 
   tasks:
-    - name: deabilitar modulo postgre 
-      command: dnf -qy module disable postgresql
+    # - name: deabilitar modulo postgre 
+      # command: dnf -qy module disable postgresql
  
     # - name: installar
       # yum:
