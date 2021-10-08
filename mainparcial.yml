@@ -3,7 +3,7 @@
   hosts: localhost
   become: true
   gather_facts: false
-  tags:
+  #tags:
     #- database_servers
   vars:
     
