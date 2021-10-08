@@ -1,7 +1,6 @@
 ---
 - name: Deploy, configure, and populate Postgres 10
   hosts: localhost
-  connection: local
   become: true
   gather_facts: false
   tags:
