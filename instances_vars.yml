@@ -11,7 +11,6 @@ instances:
       deployment_name: finallab
 
   - name: app1                        #for flask1
-    keypair: ${GUID}-keypair
     keypair: "{{ guid }}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
