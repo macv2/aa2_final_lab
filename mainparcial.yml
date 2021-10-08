@@ -33,7 +33,7 @@
 
   tasks:
     - name: deabilitar modulo postgre 
-      commmand: dnf -qy module disable postgresql
+      command: dnf -qy module disable postgresql
  
     - name: installar
       yum:
