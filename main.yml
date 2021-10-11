@@ -2,17 +2,3 @@
 - import_playbook: os_provision.yml
 - import_playbook: add_subscription.yml
 
-- name: Play to setup postgresql server
-  hosts: database_servers
-  roles:
-    - role: db-server
-
-- name: Play to setup apache servers
-  hosts: backend_servers
-  roles:
-    - role: app-server
-
-- name: Play to setup Haproxy
-  hosts: loadbalancers
-  roles:
-    - role: load_balancer
