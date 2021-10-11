@@ -1,6 +1,6 @@
 ---
-- import_playbook: os_provision.yml
-- import_playbook: add_subscription.yml
+#- import_playbook: os_provision.yml
+#- import_playbook: add_subscription.yml
 
 - name: Play to setup in-memory-inventory
   hosts: localhost
