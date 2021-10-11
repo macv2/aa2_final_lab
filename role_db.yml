@@ -32,5 +32,6 @@
 
 - name: Play to setup postgres
   hosts: postgres_servers
+  become: yes
   roles:
     - role: db-server
