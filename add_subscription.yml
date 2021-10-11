@@ -21,17 +21,17 @@
     - name: Build In-Memory inventory
       add_host:
         host: "{{ instance.name }}.{{ guid }}.{{ internal_domain }}"
-        group: my_osp_instances
+        group: "{{ instance.metadata.AnsibleGroup }}"
         ansible_host: "{{ instance.private_v4 }}"
         ssh_private_key_file: "{{ home }}/.ssh/{{ guid }}key.pem"
-      when: instance.metadata.AnsibleGroup == "osp_instances"
+      when: instance.metadata.AnsibleGroup == "load_balancers"  or instance.metadata.AnsibleGroup == "backend_servers"  or instance.metadata.AnsibleGroup == "database_servers" 
       loop: "{{ instances.openstack_servers }}"
       loop_control:
         loop_var: instance
 
 
 - name: Add subscription
-  hosts: my_osp_instances
+  hosts: load_balancers,backend_servers,database_servers
   gather_facts: true
   become: yes
   vars:
