@@ -25,11 +25,18 @@
   roles:
     - role: db-server
     
-- name: Play to setup postgres
+- name: Play to setup app-server
   hosts: backend_servers
   become: yes
   roles:
-    - role: app-server    
+    - role: app-server
+    
+
+- name: Play to setup load_balancers
+  hosts: haproxy_balancers
+  become: yes
+  roles:
+    - role: load_balancers  
     
     
       
