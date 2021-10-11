@@ -1,0 +1,30 @@
+---
+- name: Create OpenStack Instances
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  vars:
+    guid: "{{ lookup('env','GUID') }}"
+    
+  tasks:
+    - name: Show my guid 
+      debug: 
+        var: guid
+        
+    - name: Include Instance variables
+      include_vars: instances_vars.yml
+      
+    - name: Get Openstack server info
+      os_server_info:
+        server: "{{ instance.name }}"
+      loop: "{{ instances }}"
+      loop_control:
+        loop_var: instance
+      register: s_instances
+     
+    - debug: 
+        var: s_instances
+      
+    - debug: 
+        var: item.1.private_v4
+      loop: "{{ s_instances.results|subelements('openstack_servers') }}"  
