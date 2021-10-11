@@ -10,7 +10,7 @@
     guid: "{{ lookup('ENV','GUID') }}"
     home: "{{ lookup('ENV','HOME') }}"
     internal_domain: "internal"
-  tasks:
+  #tasks:
   roles:
     - role: in-memory-inventory
         
