@@ -1,6 +1,6 @@
 ---
 - name: In-Memory Inventory
-  hosts: localhost
+  hosts: control
   gather_facts: true
   vars:
     guid: "{{ lookup('ENV','GUID') }}"
