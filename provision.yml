@@ -5,7 +5,6 @@
   gather_facts: true
   vars:
     guid: "{{ lookup('env','GUID') }}"
-    #guid: 30cd
     
   tasks:
     - name: Show my guid 
@@ -30,4 +29,7 @@
         meta: "AnsibleGroup={{instance.metadata.AnsibleGroup}},deployment_name={{instance.metadata.deployment_name}}"
       loop: "{{ instances }}"
       loop_control:
-        loop_var: instance 
+        loop_var: instance
+        
+    - name: Show instances
+      command: "openstack server list --os-cloud ${GUID}-project"
