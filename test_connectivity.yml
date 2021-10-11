@@ -1,23 +1,36 @@
----
-- name: Building inventory
-  hosts: control_node
+ ---
+- hosts: control
+  gather_facts: true
   tasks:
-    - name: Fetch Instance Info
+    - debug:
+    
+- name: In-Memory Inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    guid: "{{ lookup('ENV','GUID') }}"
+    home: "{{ lookup('ENV','HOME') }}"
+    internal_domain: "internal"
+  tasks:
+    - name: Collection instance info
       os_server_info:
-        region_name: "{{ openstack_region | default('regionOne') }}"
-      register: r_instances
+        cloud: "{{ guid }}-project"
+      register: instances
 
-    - name: Add host(s) to inventory
+    - name: Build In-Memory inventory
       add_host:
-        name: "{{ __instance.private_v4 }}"
-        group: 
-          - "{{ __instance.metadata.AnsibleGroup }}"
-      loop: "{{ r_instances.openstack_servers }}"
+        host: "{{ instance.name }}.{{ guid }}.{{ internal_domain }}"
+        group: my_osp_instances
+        ansible_host: "{{ instance.private_v4 }}"
+        ssh_private_key_file: "{{ home }}/.ssh/{{ guid }}key.pem"
+      when: instance.metadata.AnsibleGroup == "osp_instances"
+      loop: "{{ instances.openstack_servers }}"
       loop_control:
-        loop_var: __instance
+        loop_var: instance
         
 - name: Test connectivity
-  hosts: load_balancers,backend_servers,database_servers
+  hosts: my_osp_instances
   gather_facts: false
   tasks:
     - name: test ping
