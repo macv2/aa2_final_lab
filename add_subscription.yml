@@ -66,13 +66,13 @@
     #    msg: "{{ netfacts.ansible_facts.ansible_default_ipv4.address }} "
   
     #- debug:
-    #    msg: "{{ hostvars['control.example.com'].ansible_host }} "
+    #    msg: "{{ hostvars.localhost.ansible_default_ipv4.address }}"
 
  #   - name: Insert DNS IP
  #     command: >-
  #       nmcli connection modify "System eth0"
  #       ipv4.ignore-auto-dns yes
- #       ipv4.dns {{ hostvars['control.example.com'].ansible_host }}
+ #       ipv4.dns {{ hostvars.localhost.ansible_default_ipv4.address }}
  #      +ipv4.dns 8.8.8.8
  
     
