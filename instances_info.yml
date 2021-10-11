@@ -22,9 +22,9 @@
         loop_var: instance
       register: s_instances
      
-    - name: presentar s_instance
-      debug: 
-        var: s_instances
+    #- name: presentar s_instance
+     # debug: 
+      #  var: s_instances
   
     - name: presentar private_v4
       debug:
