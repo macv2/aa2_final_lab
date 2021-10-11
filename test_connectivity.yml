@@ -15,7 +15,7 @@
       loop: "{{ r_instances.openstack_servers }}"
       loop_control:
         loop_var: __instance
-
+        
 - name: Test connectivity
   hosts: load_balancers,backend_servers,database_servers
   gather_facts: false
