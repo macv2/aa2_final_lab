@@ -22,9 +22,11 @@
         loop_var: instance
       register: s_instances
      
-    - debug: 
+    - name: presentar s_instance
+      debug: 
         var: s_instances
-      
-    - debug: 
+  
+    - name: presentar private_v4
+      debug:
         var: item.1.private_v4
       loop: "{{ s_instances.results|subelements('openstack_servers') }}"  
