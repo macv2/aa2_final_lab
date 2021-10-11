@@ -1,2 +1,5 @@
 ---
 # defaults file for roles/in-memory-inventory
+    guid: "{{ lookup('ENV','GUID') }}"
+    home: "{{ lookup('ENV','HOME') }}"
+    internal_domain: "internal"
