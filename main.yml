@@ -19,17 +19,17 @@
     - name: test ping
       ping:
       
-# - name: Play to setup postgres
-  # hosts: postgres_servers
-  # become: yes
-  # roles:
-    # - role: db-server
-    
-- name: Play to setup app-server
-  hosts: backend_servers
+- name: Play to setup postgres
+  hosts: postgres_servers
   become: yes
   roles:
-    - role: app-server
+    - role: db-server
+    
+# - name: Play to setup app-server
+  # hosts: backend_servers
+  # become: yes
+  # roles:
+    # - role: app-server
     
 
 # - name: Play to setup load_balancers
