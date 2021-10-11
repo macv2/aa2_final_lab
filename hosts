@@ -14,7 +14,7 @@ app_servers
 database_servers
 
 [control_node]
-localhost
+192.168.50.61
 
 
 [all:vars]
