@@ -6,7 +6,7 @@
     
 - name: In-Memory Inventory
   hosts: localhost
-  connection: local
+  #connection: local
   gather_facts: false
   vars:
     guid: "{{ lookup('ENV','GUID') }}"
