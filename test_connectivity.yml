@@ -1,6 +1,6 @@
 ---
 - name: In-Memory Inventory
-  hosts: control
+  hosts: all
   gather_facts: true
   vars:
     guid: "{{ lookup('ENV','GUID') }}"
