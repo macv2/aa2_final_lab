@@ -9,7 +9,7 @@
   connection: local
   gather_facts: false
   vars:
-    guid: "{{ lookup('ENV','GUID') }}"
+    # guid: "{{ lookup('ENV','GUID') }}"
     home: "{{ lookup('ENV','HOME') }}"
     internal_domain: "internal"
   tasks:
