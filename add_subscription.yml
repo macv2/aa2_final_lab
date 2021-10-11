@@ -28,9 +28,7 @@
       loop: "{{ instances.openstack_servers }}"
       loop_control:
         loop_var: instance
-        
- 
-       
+
 
 - name: Add subscription
   hosts: my_osp_instances
@@ -39,8 +37,7 @@
   vars:
     satellite_activationkey: gpte-labs-rhel8
     satellite_org: prod  
-  
-  
+   
   tasks:
     - name: Gather network facts
       setup:
