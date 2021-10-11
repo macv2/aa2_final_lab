@@ -1,9 +1,10 @@
 ---
 # tasks file for roles/db-server
     - name: Install Postgres packages
-      package:
+      yum:
         name: "{{ __package }}"
         state: present
+        disable_gpg_check: yes  
       loop: 
         - "{{ postgres_rhel8_repo }}"        
         - "{{ postgres_packages }}"
