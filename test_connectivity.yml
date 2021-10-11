@@ -1,11 +1,11 @@
 ---
-- hosts: all
+- hosts: localhost
   gather_facts: true
   tasks:
     - debug:
     
 - name: In-Memory Inventory
-  hosts: all
+  hosts: localhost
   gather_facts: false
   vars:
     guid: "{{ lookup('ENV','GUID') }}"
