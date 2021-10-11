@@ -1,5 +1,9 @@
 ---
-#- import_playbook: os_provision.yml
+#- name: Play to setup openstack instances
+#  hosts: localhost
+#  roles:
+#    - role: openstack_instances
+    
 #- import_playbook: add_subscription.yml
 
 - name: Play to setup in-memory-inventory
@@ -14,4 +18,6 @@
   tasks:
     - name: test ping
       ping:
+      
+      
 
