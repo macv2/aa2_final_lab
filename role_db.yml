@@ -1,4 +1,11 @@
 ---
+- name: Play to setup in-memory-inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - role: in-memory-inventory
+
 - name: Play to setup postgres
   hosts: postgres_servers
   become: yes
