@@ -3,7 +3,7 @@
   hosts: control_node
   gather_facts: true
   vars:
-    guid: "{{ lookup('ENV','GUID') }}"
+    GUID: "{{ lookup('ENV','GUID') }}"
     home: "{{ lookup('ENV','HOME') }}"
     internal_domain: "internal"
   
