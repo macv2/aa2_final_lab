@@ -10,7 +10,7 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: osp_instances
+      AnsibleGroup: load_balancers
       deployment_name: finallab
 
   - name: app1                        #for flask1
@@ -20,7 +20,7 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: osp_instances
+      AnsibleGroup: backend_servers
       deployment_name: finallab
 
   - name: app2                        #for flask2      
@@ -30,7 +30,7 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: osp_instances
+      AnsibleGroup: backend_servers
       deployment_name: finallab
 
   - name: appdb1                        #for postgres
@@ -40,5 +40,5 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: osp_instances
+      AnsibleGroup: database_servers
       deployment_name: finallab    
