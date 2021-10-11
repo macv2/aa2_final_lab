@@ -1,9 +1,4 @@
 ---
-- hosts: localhost
-  gather_facts: true
-  tasks:
-    - debug:
-    
 - name: In-Memory Inventory
   hosts: localhost
   gather_facts: false
@@ -11,6 +6,7 @@
     guid: "{{ lookup('ENV','GUID') }}"
     home: "{{ lookup('ENV','HOME') }}"
     internal_domain: "internal"
+  
   tasks:
     - name: Collection instance info
       os_server_info:
