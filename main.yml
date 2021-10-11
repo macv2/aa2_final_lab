@@ -36,7 +36,7 @@
   hosts: haproxy_balancers
   become: yes
   roles:
-    - role: load_balancers  
+    - role: load-balancer  
     
     
       
