@@ -13,5 +13,9 @@ load_balancers
 app_servers
 database_servers
 
+[control_node]
+localhost
+
+
 [all:vars]
-GUID="{{ lookup('env', 'GUID') }}"
+guid="{{ lookup('env', 'GUID') }}"
