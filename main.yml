@@ -5,33 +5,14 @@
 - name: Play to setup postgresql server
   hosts: database_servers
   roles:
-    - role: firewall
-      vars:
-        firewall_services:
-          - postgresql
-
     - role: db-server
 
 - name: Play to setup apache servers
   hosts: backend_servers
   roles:
-    - role: firewall
-      vars:
-        firewall_services:
-          - http
-        firewall_tcp_ports:
-          - 8080
-
     - role: app-server
 
 - name: Play to setup Haproxy
   hosts: loadbalancers
   roles:
-    - role: firewall
-      vars:
-        firewall_services:
-          - http
-        firewall_tcp_ports:
-          - 5000
-
     - role: load_balancer
