@@ -1,2 +1,38 @@
 ---
 # tasks file for roles/openstack_instances
+    - name: Show my guid 
+      debug: 
+        var: guid
+        
+    - name: Include Instance variables
+      include_vars: instances_vars.yml
+
+    - name: Create Instance
+      os_server:
+        cloud: "{{ guid }}-project"
+        name: "{{ instance.name }}"
+        image: "{{ instance.image }}"
+        key_name: "{{ instance.keypair }}"
+        flavor: "{{ instance.flavor }}"
+        security_groups: "{{ instance.security_group }}"
+        delete_fip: yes
+        wait: no
+        nics:
+          - net-name: "{{ instance.internal_network }}"
+        meta: "AnsibleGroup={{instance.metadata.AnsibleGroup}},deployment_name={{instance.metadata.deployment_name}}"
+      loop: "{{ instances }}"
+      loop_control:
+        loop_var: instance
+      async: 900
+      poll: 0
+      register: r_instances
+      
+    - name: Wait for async OSP instance creation to complete
+      async_status: "jid={{ item.ansible_job_id }}"
+      register: r_wait
+      until: r_wait.finished
+      retries: 900
+      loop: "{{ r_instances.results }}"  
+        
+    - name: Show instances
+      command: "openstack server list --os-cloud ${GUID}-project"
