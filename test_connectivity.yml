@@ -19,13 +19,13 @@
         group: "{{ instance.metadata.AnsibleGroup }}"
         ansible_host: "{{ instance.private_v4 }}"
         ssh_private_key_file: "{{ home }}/.ssh/{{ guid }}key.pem"
-      when: instance.metadata.AnsibleGroup == "load_balancers"  or instance.metadata.AnsibleGroup == "backend_servers"  or instance.metadata.AnsibleGroup == "database_servers"
+      when: instance.metadata.AnsibleGroup == "haproxy_balancers"  or instance.metadata.AnsibleGroup == "backend_servers"  or instance.metadata.AnsibleGroup == "postgres_servers"
       loop: "{{ instances.openstack_servers }}"
       loop_control:
         loop_var: instance
         
 - name: Test connectivity
-  hosts: load_balancers,backend_servers,database_servers
+  hosts: haproxy_balancers,backend_servers,postgres_servers
   tasks:
     - name: test ping
       ping:
