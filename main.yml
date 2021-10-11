@@ -25,6 +25,12 @@
   roles:
     - role: db-server
     
+- name: Play to setup postgres
+  hosts: backend_servers
+  become: yes
+  roles:
+    - role: app-server    
+    
     
       
       
