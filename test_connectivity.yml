@@ -27,6 +27,8 @@
 - name: Test connectivity
   hosts: load_balancers,backend_servers,database_servers
   gather_facts: false
+  vars:
+    guid: "{{ lookup('ENV','GUID') }}"
   tasks:
     - name: test ping
       ping:
