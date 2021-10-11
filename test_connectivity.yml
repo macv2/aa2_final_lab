@@ -1,6 +1,13 @@
 ---
 - name: Play to setup in-memory-inventory
   hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    guid: "{{ lookup('ENV','GUID') }}"
+    home: "{{ lookup('ENV','HOME') }}"
+    internal_domain: "internal"
+  tasks:
   roles:
     - role: in-memory-inventory
         
