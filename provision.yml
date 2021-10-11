@@ -30,6 +30,16 @@
       loop: "{{ instances }}"
       loop_control:
         loop_var: instance
+      async: 900
+      poll: 0
+      register: r_instances
+      
+    - name: Wait for async OSP instance creation to complete
+      async_status: "jid={{ item.ansible_job_id }}"
+      register: r_wait
+      until: r_wait.finished
+      retries: 900
+      loop: "{{ r_instances.results }}"  
         
     - name: Show instances
       command: "openstack server list --os-cloud ${GUID}-project"
