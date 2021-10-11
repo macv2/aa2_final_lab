@@ -35,30 +35,4 @@
   debug:
     var: os_list.stdout
     
-- name: Get Openstack server info
-  os_server_info:
-    server: "{{ instance.name }}"
-  loop: "{{ instances }}"
-  loop_control:
-    loop_var: instance
-  register: s_instances
- 
-- name: presentar s_instance
-  debug: 
-    var: s_instances
-  
-- name: presentar private_v4
-  debug:
-    var: item.1.private_v4
-  loop: "{{ s_instances.results|subelements('openstack_servers') }}"  
 
-# - name: Wait for servers by name to be available
-  # wait_for:
-    # host: "{{ __ip.1.private_v4 }}"
-    # port: 22
-    # search_regex: OpenSSH
-    # timeout: 600
-  # loop: "{{ s_instances.results|subelements('openstack_servers') }}"
-  # loop_control:
-    # loop_var: __ip
-  # delegate_to: "{{ inventory_hostname }}" 
