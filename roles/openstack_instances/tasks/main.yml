@@ -47,13 +47,13 @@
     var: item.1.private_v4
   loop: "{{ s_instances.results|subelements('openstack_servers') }}"
 
-- name: Wait for servers by name to be available
-  wait_for:
-    host: "{{ __ip.1.private_v4 }}"
-    port: 22
-    search_regex: OpenSSH
-    timeout: 600
-  loop: "{{ s_instances.results|subelements('openstack_servers') }}"
-  loop_control:
-    loop_var: __ip
-  delegate_to: "{{ inventory_hostname }}"    
+# - name: Wait for servers by name to be available
+  # wait_for:
+    # host: "{{ __ip.1.private_v4 }}"
+    # port: 22
+    # search_regex: OpenSSH
+    # timeout: 600
+  # loop: "{{ s_instances.results|subelements('openstack_servers') }}"
+  # loop_control:
+    # loop_var: __ip
+  # delegate_to: "{{ inventory_hostname }}" 
