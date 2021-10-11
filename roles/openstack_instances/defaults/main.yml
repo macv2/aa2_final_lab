@@ -10,7 +10,7 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: load_balancers
+      AnsibleGroup: haproxy_balancers
       deployment_name: finallab
 
   - name: app1                        #for flask1
@@ -40,5 +40,5 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: database_servers
+      AnsibleGroup: postgres_servers
       deployment_name: finallab    
