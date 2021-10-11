@@ -30,7 +30,7 @@
         loop_var: instance
         
 - name: Test connectivity
-  hosts: my_osp_instances
+  hosts: load_balancers,backend_servers,database_servers
   gather_facts: false
   tasks:
     - name: test ping
