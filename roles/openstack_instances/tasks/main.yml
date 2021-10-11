@@ -33,4 +33,4 @@
   
 - name: Show instances
   debug:
-    var: os_list
+    var: os_list.stdout
