@@ -1,10 +1,5 @@
 ---
 # tasks file for roles/in-memory-inventory
-- hosts: control
-  gather_facts: true
-  tasks:
-    - debug:
-    
 - name: In-Memory Inventory
   hosts: localhost
   connection: local
