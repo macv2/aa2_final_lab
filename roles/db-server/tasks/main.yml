@@ -1,5 +1,8 @@
 ---
 # tasks file for roles/db-server
+    - name: deabilitar modulo postgre 
+      command: dnf -qy module disable postgresql
+
     - name: Install Postgres packages
       yum:
         name: "{{ __package }}"
@@ -11,6 +14,8 @@
         - "{{ postgres_library }}"
       loop_control:
         loop_var: __package
+        
+  
 
     - name: Check if Postgres initialized
       stat:
