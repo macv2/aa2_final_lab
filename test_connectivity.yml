@@ -5,7 +5,7 @@
     - debug:
     
 - name: In-Memory Inventory
-
+  hosts: control_node
   gather_facts: false
   vars:
     #guid: "{{ lookup('ENV','GUID') }}"
