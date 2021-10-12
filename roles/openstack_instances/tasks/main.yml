@@ -34,22 +34,7 @@
 - name: Show instances
   debug:
     var: os_list.stdout
-    
-- when: true
-  block:
-    - name: Collection instance info
-      os_server_info:
-        cloud: "{{ guid }}-project"
-      register: os_servers_instances
-    
-    - name: Wait for servers to be available
-      wait_for:
-        host: "{{ item.private_v4 }}"
-        port: 22
-        search_regex: OpenSSH
-        timeout: 600
-      when: item.metadata.AnsibleGroup == "haproxy_balancers"  or item.metadata.AnsibleGroup == "backend_servers"  or item.metadata.AnsibleGroup == "postgres_servers"  
-      loop: "{{ os_servers_instances.openstack_servers }}"    
+
 
   
     
