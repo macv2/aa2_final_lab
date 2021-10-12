@@ -1,4 +1,19 @@
 ---
+- name: Play to setup in-memory-inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - role: in-memory-inventory
+        
+- name: Test connectivity
+  hosts: haproxy_balancers,backend_servers,postgres_servers
+  tasks:
+    - name: test ping
+      ping:
+
+
+
 - name: Delete OpenStack Instances
   hosts: localhost
   connection: local
