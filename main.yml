@@ -4,15 +4,20 @@
   roles:
     - role: openstack_instances
     
-- import_playbook: add_subscription.yml
-
 - name: Play to setup in-memory-inventory
   hosts: localhost
   connection: local
   gather_facts: false
   roles:
     - role: in-memory-inventory
-        
+    
+- name: Play to setup network members
+  hosts: haproxy_balancers,backend_servers,postgres_servers
+  gather_facts: true
+  become: yes    
+  roles:
+    - role: network-member
+    
 - name: Test connectivity
   hosts: haproxy_balancers,backend_servers,postgres_servers
   tasks:
