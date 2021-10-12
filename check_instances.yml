@@ -14,4 +14,4 @@
   
   - name: Wait for servers to be available
     debug:
-      var: "{{ os_servers_instances.openstack_servers[0].private_v4 }}"
+      var: os_servers_instances
