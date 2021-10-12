@@ -7,7 +7,7 @@
     guid: "{{ lookup('env','GUID') }}"
   
   tasks:
-  - when: openstack_server_state != 'absent' | default(true)
+  - when: true
     block:
       - name: Collection instance info
         os_server_info:
