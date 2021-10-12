@@ -1,0 +1,21 @@
+---
+- name: Delete OpenStack Instances
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  vars:
+    guid: "{{ lookup('env','GUID') }}"
+  
+  tasks:
+  - name: Collection instance info
+    os_server_info:
+      cloud: "{{ guid }}-project"
+    register: os_servers_instances
+  
+  - name: Wait for servers to be available
+    debug:
+      var: "{{ servers_instance.private_v4 }}"
+    when: servers_instance.metadata.AnsibleGroup == "haproxy_balancers"  or servers_instance.metadata.AnsibleGroup == "backend_servers"  or servers_instance.metadata.AnsibleGroup == "postgres_servers"  
+    loop: "{{ os_servers_instances.openstack_servers }}"
+    loop_control:
+      loop_var: servers_instance
