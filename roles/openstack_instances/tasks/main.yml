@@ -46,7 +46,8 @@
     port: 22
     search_regex: OpenSSH
     timeout: 600
-  loop: "{{ os_servers_instances }}"
+  when: servers_instance.metadata.AnsibleGroup == "haproxy_balancers"  or servers_instance.metadata.AnsibleGroup == "backend_servers"  or servers_instance.metadata.AnsibleGroup == "postgres_servers"  
+  loop: "{{ os_servers_instances.openstack_servers }}"
   loop_control:
     loop_var: servers_instance
   #delegate_to: localhost
