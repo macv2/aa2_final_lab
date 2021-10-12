@@ -19,6 +19,6 @@
           host: "{{ item.private_v4 }}"
           port: 22
           search_regex: OpenSSH
-          timeout: 10
+          timeout: 60
         when: item.metadata.AnsibleGroup == "haproxy_balancers"  or item.metadata.AnsibleGroup == "backend_servers"  or item.metadata.AnsibleGroup == "postgres_servers"  
         loop: "{{ os_servers_instances.openstack_servers }}"  
