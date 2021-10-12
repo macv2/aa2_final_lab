@@ -15,6 +15,7 @@
       loop_control:
         loop_var: __instance
       register: content
+      
     - name: Debug Content
       debug:
         msg: "{{ content }}"
