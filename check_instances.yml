@@ -21,4 +21,4 @@
       host: "{{ os_servers_instances.openstack_servers[0].private_v4 }}"
       port: 22
       search_regex: OpenSSH
-      timeout: 600      
+      timeout: 10      
