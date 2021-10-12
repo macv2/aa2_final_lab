@@ -1,2 +1,44 @@
 ---
 # vars file for roles/openstack_instances
+guid: "{{ lookup('env','GUID') }}"
+    
+instances:
+  - name: frontend1                #for haproxy
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: haproxy_balancers
+      deployment_name: finallab
+
+  - name: app1                        #for flask1
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: backend_servers
+      deployment_name: finallab
+
+  - name: app2                        #for flask2      
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: backend_servers
+      deployment_name: finallab
+
+  - name: appdb1                        #for postgres
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: postgres_servers
+      deployment_name: finallab
