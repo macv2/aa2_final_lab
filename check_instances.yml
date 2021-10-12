@@ -14,7 +14,10 @@
   
   - name: Wait for servers to be available
     debug:
-      var: os_servers_instances.openstack_servers[0].private_v4
+      var: item.private_v4
+    when: item.metadata.AnsibleGroup == "haproxy_balancers"  or item.metadata.AnsibleGroup == "backend_servers"  or item.metadata.AnsibleGroup == "postgres_servers"  
+    loop: "{{ os_servers_instances.openstack_servers }}"
+
       
   - name: Wait for servers to be available
     wait_for:
