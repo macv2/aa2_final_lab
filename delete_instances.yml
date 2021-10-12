@@ -16,6 +16,7 @@
     os_server:
       name: "{{ instance.name }}"
       state: absent
-    loop: "{{ instances }}"
+    when: instance.metadata.AnsibleGroup == "haproxy_balancers"  or instance.metadata.AnsibleGroup == "backend_servers"  or instance.metadata.AnsibleGroup == "postgres_servers" 
+    loop: "{{ instances.openstack_servers }}"
     loop_control:
       loop_var: instance
