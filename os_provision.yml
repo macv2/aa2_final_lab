@@ -1,7 +1,9 @@
 ---
 - name: Play to setup openstack instances
   hosts: localhost
-  collections: openstack.cloud
+  connection: local
+  collections: 
+    - openstack.cloud
   roles:
-    - role: openstack_instances
+    - openstack_instances
     
