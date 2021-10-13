@@ -28,7 +28,7 @@
   loop: "{{ r_instances.results }}"  
     
 - name: Get instances list
-  command: "openstack server list --os-cloud ${GUID}-project"
+  command: "openstack server list --os-cloud {{ guid }}-project"
   register: os_list
   
 - name: Show instances
