@@ -27,13 +27,13 @@
   retries: 900
   loop: "{{ r_instances.results }}"  
     
-- name: Get instances list
-  command: "openstack server list --os-cloud {{ guid }}-project"
-  register: os_list
+# - name: Get instances list
+  # command: "openstack server list --os-cloud {{ guid }}-project"
+  # register: os_list
   
-- name: Show instances
-  debug:
-    var: os_list.stdout
+# - name: Show instances
+  # debug:
+    # var: os_list.stdout
     
 - when: true
   block:
