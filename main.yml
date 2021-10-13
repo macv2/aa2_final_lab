@@ -2,7 +2,6 @@
 - name: Play to setup openstack instances
   hosts: localhost
   connection: local
-  gather_facts: false
   collections: openstack.cloud
   roles:
     - role: 
