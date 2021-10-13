@@ -1,16 +1,15 @@
 ---
 - name: Play to setup openstack instances
   hosts: localhost
-  roles:
-    - role: openstack_instances
-    
-- name: Play to setup in-memory-inventory
-  hosts: localhost
   connection: local
   gather_facts: false
+  collections: openstack.cloud
   roles:
-    - role: in-memory-inventory
-    
+    - role: 
+      - openstack_instances
+      - in-memory-inventory
+ 
+  
 - name: Play to setup network members
   hosts: haproxy_balancers,backend_servers,postgres_servers
   gather_facts: true
