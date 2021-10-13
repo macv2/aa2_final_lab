@@ -4,9 +4,8 @@
   connection: local
   collections: openstack.cloud
   roles:
-    - role: 
-      - openstack_instances
-      - in-memory-inventory
+    - openstack_instances
+    - in-memory-inventory
  
   
 - name: Play to setup network members
