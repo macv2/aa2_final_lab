@@ -2,7 +2,8 @@
 - name: Play to setup openstack instances
   hosts: localhost
   connection: local
-  collections: openstack.cloud
+  collections: 
+    - openstack.cloud
   roles:
     - openstack_instances
     - in-memory-inventory
