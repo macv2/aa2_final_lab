@@ -38,4 +38,7 @@
   hosts: haproxy_balancers
   become: yes
   roles:
-    - role: load-balancer  
+    - role: load-balancer
+    
+- name: Execute smoke test
+  import_playbook: smoke-test.yml   
