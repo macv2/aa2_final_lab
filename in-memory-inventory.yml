@@ -1,5 +1,5 @@
 - name: Play to setup in-memory-inventory
-  hosts: all
+  hosts: control_node
   #connection: local
   collections: 
     - openstack.cloud
