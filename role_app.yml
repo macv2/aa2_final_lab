@@ -6,7 +6,7 @@
     # - role: in-memory-inventory
 
 - name: Play to setup postgres
-  hosts: backend_servers
+  hosts: app_servers
   become: yes
   roles:
     - role: app-server
