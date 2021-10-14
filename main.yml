@@ -1,7 +1,6 @@
 ---
 - name: Play to setup openstack instances
   hosts: control_node
-  #connection: local
   collections: 
     - openstack.cloud
   roles:
