@@ -20,7 +20,7 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: backend_servers
+      AnsibleGroup: app_servers
       deployment_name: finallab
 
   - name: app2                        #for flask2      
@@ -30,7 +30,7 @@ instances:
     security_group: "{{ guid }}-HostSG"
     internal_network: "{{ guid }}-dev-network"
     metadata:
-      AnsibleGroup: backend_servers
+      AnsibleGroup: app_servers
       deployment_name: finallab
 
   - name: appdb1                        #for postgres
@@ -41,4 +41,4 @@ instances:
     internal_network: "{{ guid }}-dev-network"
     metadata:
       AnsibleGroup: postgres_servers
-      deployment_name: finallab
+      deployment_name: finallab  
