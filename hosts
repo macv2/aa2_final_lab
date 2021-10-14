@@ -13,7 +13,7 @@ load_balancers
 app_servers
 database_servers
 
-[control_node]
+[control]
 192.168.50.61
 
 
