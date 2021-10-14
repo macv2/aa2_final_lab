@@ -1,39 +1,39 @@
 ---
 # tasks file for roles/openstack_instances
-- name: Create Instance
-  os_server:
-    #cloud: "{{ guid }}-project"
-    name: "{{ instance.name }}"
-    image: "{{ instance.image }}"
-    key_name: "{{ instance.keypair }}"
-    flavor: "{{ instance.flavor }}"
-    security_groups: "{{ instance.security_group }}"
-    delete_fip: yes
-    wait: no
-    nics:
-      - net-name: "{{ instance.internal_network }}"
-    meta: "AnsibleGroup={{instance.metadata.AnsibleGroup}},deployment_name={{instance.metadata.deployment_name}}"
-  loop: "{{ instances }}"
-  loop_control:
-    loop_var: instance
-  async: 900
-  poll: 0
-  register: r_instances
+# - name: Create Instance
+  # os_server:
+    # #cloud: "{{ guid }}-project"
+    # name: "{{ instance.name }}"
+    # image: "{{ instance.image }}"
+    # key_name: "{{ instance.keypair }}"
+    # flavor: "{{ instance.flavor }}"
+    # security_groups: "{{ instance.security_group }}"
+    # delete_fip: yes
+    # wait: no
+    # nics:
+      # - net-name: "{{ instance.internal_network }}"
+    # meta: "AnsibleGroup={{instance.metadata.AnsibleGroup}},deployment_name={{instance.metadata.deployment_name}}"
+  # loop: "{{ instances }}"
+  # loop_control:
+    # loop_var: instance
+  # async: 900
+  # poll: 0
+  # register: r_instances
   
-- name: Wait for async OSP instance creation to complete
-  async_status: "jid={{ item.ansible_job_id }}"
-  register: r_wait
-  until: r_wait.finished
-  retries: 900
-  loop: "{{ r_instances.results }}"  
-    
-# - name: Get instances list
-  # command: "openstack server list --os-cloud {{ guid }}-project"
-  # register: os_list
+# - name: Wait for async OSP instance creation to complete
+  # async_status: "jid={{ item.ansible_job_id }}"
+  # register: r_wait
+  # until: r_wait.finished
+  # retries: 900
+  # loop: "{{ r_instances.results }}"
   
-# - name: Show instances
-  # debug:
-    # var: os_list.stdout
+- name: Get instances list
+  command: "openstack server list --os-cloud {{ guid }}-project"
+  register: os_list
+  
+- name: Show instances
+  debug:
+    var: os_list.stdout
     
 - when: true
   block:
