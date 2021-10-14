@@ -1,6 +1,6 @@
 ---
 - name: Play to setup openstack instances
-  hosts: control_node
+  hosts: control
   collections: 
     - openstack.cloud
   roles:
@@ -9,14 +9,14 @@
  
   
 - name: Play to setup network members
-  hosts: haproxy_balancers,backend_servers,postgres_servers
+  hosts: haproxy_balancers,app_servers,postgres_servers
   gather_facts: true
   become: yes    
   roles:
     - role: network-member
     
 - name: Test connectivity
-  hosts: haproxy_balancers,backend_servers,postgres_servers
+  hosts: haproxy_balancers,app_servers,postgres_servers
   tasks:
     - name: test ping
       ping:
@@ -28,7 +28,7 @@
     - role: db-server
     
 - name: Play to setup app-server
-  hosts: backend_servers
+  hosts: app_servers
   become: yes
   roles:
     - role: app-server
