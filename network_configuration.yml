@@ -12,6 +12,6 @@
   collections: 
     - openstack.cloud
   #gather_facts: true
-  become: yes    
+  #become: yes    
   roles:
     - role: network-member
