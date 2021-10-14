@@ -19,12 +19,12 @@ defaults
 frontend hafrontend
     bind *:80
     mode http
-    default_backend app-servers
+    default_backend backend_app_servers
 
-backend app-servers
+backend backend_app_servers
     mode http
     balance roundrobin
     option forwardfor
-{% for host in groups['app_servers'] %}
+{% for host in groups['backend_app_servers'] %}
     server app{{ loop.index }} {{ hostvars[host]['inventory_hostname'] }}:8080 cookie app{{ loop.index }} check
 {% endfor %}
