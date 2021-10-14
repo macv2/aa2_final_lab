@@ -10,5 +10,7 @@
 - name: Play to setup network members
   hosts: haproxy_balancers,app_servers,postgres_servers
   gather_facts: true
+  collections: 
+    - openstack.cloud
   roles:
     - role: network-member
