@@ -1,7 +1,6 @@
 ---
 - name: Play to setup in-memory-inventory
   hosts: control_node
-  #connection: local
   gather_facts: false
   roles:
     - role: in-memory-inventory
