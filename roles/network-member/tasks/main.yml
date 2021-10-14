@@ -6,7 +6,7 @@
           - 'network'
       delegate_facts: true
       delegate_to: control_node  #localhost
-      connection: local
+      #connection: local
       register: netfacts
       
     - name: DNS IP updated
