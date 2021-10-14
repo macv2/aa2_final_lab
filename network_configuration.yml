@@ -1,6 +1,8 @@
 ---
 - name: Play to setup in-memory-inventory
   hosts: control   #control_node
+  collections: 
+    - openstack.cloud
   gather_facts: false
   roles:
     - role: in-memory-inventory
