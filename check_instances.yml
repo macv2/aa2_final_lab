@@ -1,7 +1,6 @@
 ---
 - name: Check OpenStack Instances
-  hosts: localhost
-  connection: local
+  hosts: control_node
   gather_facts: true
   vars:
     guid: "{{ lookup('env','GUID') }}"
