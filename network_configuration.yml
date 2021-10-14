@@ -11,7 +11,7 @@
   hosts: haproxy_balancers,app_servers,postgres_servers
   collections: 
     - openstack.cloud
-  gather_facts: true
+  #gather_facts: true
   become: yes    
   roles:
     - role: network-member
