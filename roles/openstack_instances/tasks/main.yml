@@ -2,7 +2,7 @@
 # tasks file for roles/openstack_instances
 - name: Create Instance
   os_server:
-    cloud: "{{ guid }}-project"
+    #cloud: "{{ guid }}-project"
     name: "{{ instance.name }}"
     image: "{{ instance.image }}"
     key_name: "{{ instance.keypair }}"
