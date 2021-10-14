@@ -1,7 +1,7 @@
 [load_balancers]
 frontend1  ansible_ssh_host=frontend1."{{ GUID }}".internal
 
-[app_servers]
+[backend_app_servers]
 app1  ansible_ssh_host=app1."{{ GUID }}".internal
 app2  ansible_ssh_host=app2."{{ GUID }}".internal
 
