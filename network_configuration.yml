@@ -7,6 +7,8 @@
     
 - name: Play to setup network members
   hosts: haproxy_balancers,backend_servers,postgres_servers
+  collections: 
+    - openstack.cloud
   gather_facts: true
   become: yes    
   roles:
