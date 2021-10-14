@@ -16,9 +16,7 @@
         line: "{{ item }}"
       loop:
         - PEERDNS=no
-        - DNS1={{ hostvars.control.ansible_default_ipv4.address }}
-      delegate_facts: true
-      delegate_to: control   
+        - DNS1={{ hostvars.localhost.ansible_default_ipv4.address }}
       register: network_update
       
      
